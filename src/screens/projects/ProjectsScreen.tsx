@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { industries, projects } from '../../data/seed';
+import { industries, projectCover, projects } from '../../data/seed';
 import { Chip } from '../../components/ui/Chip';
 import { Tag } from '../../components/ui/Tag';
 import { Photo, PlaceholderPhoto } from '../../components/ui/PlaceholderPhoto';
@@ -23,9 +23,11 @@ export function ProjectsScreen() {
         ))}
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '0 16px' }}>
-        {filteredProjects.map((proj) => (
+        {filteredProjects.map((proj) => {
+          const cover = projectCover(proj);
+          return (
           <div key={proj.id} className="card elev-sm" style={{ padding: 0, overflow: 'hidden', cursor: 'pointer' }} onClick={() => navigate(`/projects/${proj.id}`)}>
-            {proj.photo ? <Photo src={proj.photo} alt={proj.name} height={130} /> : <PlaceholderPhoto label="PROJECT PHOTO" height={130} />}
+            {cover ? <Photo src={cover} alt={proj.name} height={130} /> : <PlaceholderPhoto label="PROJECT PHOTO" height={130} />}
             <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
               <div style={{ display: 'flex', gap: 6 }}>
                 <Tag variant="accent">{proj.industry}</Tag>
@@ -35,7 +37,8 @@ export function ProjectsScreen() {
               <div style={{ fontSize: 11, opacity: 0.55 }}>{proj.location}</div>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

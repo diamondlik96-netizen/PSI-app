@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { heroPhoto, projects, services } from '../../data/seed';
+import { heroPhoto, projectCover, projects, services } from '../../data/seed';
 import { useAppState } from '../../state/AppStateContext';
 import { RedBarHeading } from '../../components/ui/RedBarHeading';
 import { Tag } from '../../components/ui/Tag';
@@ -155,15 +155,18 @@ export function HomeScreen() {
           </button>
         </div>
         <div style={{ display: 'flex', gap: 10, overflowX: 'auto', padding: '0 16px 6px' }}>
-          {featuredProjects.map((proj) => (
+          {featuredProjects.map((proj) => {
+            const cover = projectCover(proj);
+            return (
             <div key={proj.id} style={{ width: 230, flex: 'none', cursor: 'pointer', background: '#1a1a1a', color: '#fff', overflow: 'hidden' }} onClick={() => navigate(`/projects/${proj.id}`)}>
-              {proj.photo ? <Photo src={proj.photo} alt={proj.name} height={120} /> : <PlaceholderPhoto label="PROJECT PHOTO" height={120} />}
+              {cover ? <Photo src={cover} alt={proj.name} height={120} /> : <PlaceholderPhoto label="PROJECT PHOTO" height={120} />}
               <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 5 }}>
                 <span style={{ fontSize: 9.5, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--color-accent-400)' }}>{proj.industry}</span>
                 <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 12.5, lineHeight: 1.25 }}>{proj.name}</div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

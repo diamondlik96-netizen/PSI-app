@@ -21,23 +21,42 @@ export const productTypes = [
   'Wall Padding',
 ];
 
+// ─────────────────────────────────────────────────────────────────────────
+// PORTFOLIO PROJECTS
+// See HOW_TO_ADD_A_PROJECT.md at the project root for the full walkthrough.
+// Quick version: drop your photos in public/assets/projects/<a-short-slug>/,
+// then copy this template into the array below.
+//
+// {
+//   id: 'a-short-slug',                  // unique, no spaces — also your folder name
+//   name: 'Project Title',
+//   industry: 'Hospitality',             // one of: industries (below)
+//   productType: 'Operable Partitions',  // one of: productTypes (below)
+//   location: 'City, ST',
+//   photos: [
+//     { src: '/assets/projects/a-short-slug/1.jpg', caption: 'Optional caption' },
+//     { src: '/assets/projects/a-short-slug/2.jpg' },
+//   ],
+//   summary: 'A sentence or two about the job.',
+//   testimonial: null,                   // or a quote string
+// },
+// ─────────────────────────────────────────────────────────────────────────
 export const projects: Project[] = [
   {
-    id: 'p0',
+    id: 'occc-phase-1',
     name: 'Orange County Convention Center — Phase 1 Operable Wall Installation',
     industry: 'Commercial',
     productType: 'Operable Partitions',
     location: 'Orlando, FL',
     featured: true,
-    photo: '/assets/occc-aerial.png',
     photos: [
-      { src: '/assets/occc-aerial.png', caption: 'One of the largest convention centers in the country — 7M sq ft, 2.1M sq ft of event space' },
-      { src: '/assets/occc-gray-wall.png', caption: 'Completed run — panels over 40 feet high' },
-      { src: '/assets/occc-door-wall.png', caption: 'Integrated pass doors within the new wall system' },
-      { src: '/assets/occc-wall-10.png', caption: 'Hall 10 — full-height divisible wall, closed position' },
-      { src: '/assets/occc-wall-12.png', caption: 'Hall 12 — completed installation' },
-      { src: '/assets/occc-staging.png', caption: 'Panel staging on the exhibit floor' },
-      { src: '/assets/occc-lift.png', caption: 'PSI crew setting trolley hardware at track height' },
+      { src: '/assets/projects/occc-phase-1/1.png', caption: 'One of the largest convention centers in the country — 7M sq ft, 2.1M sq ft of event space' },
+      { src: '/assets/projects/occc-phase-1/2.png', caption: 'Completed run — panels over 40 feet high' },
+      { src: '/assets/projects/occc-phase-1/3.png', caption: 'Integrated pass doors within the new wall system' },
+      { src: '/assets/projects/occc-phase-1/4.png', caption: 'Hall 10 — full-height divisible wall, closed position' },
+      { src: '/assets/projects/occc-phase-1/5.png', caption: 'Hall 12 — completed installation' },
+      { src: '/assets/projects/occc-phase-1/6.png', caption: 'Panel staging on the exhibit floor' },
+      { src: '/assets/projects/occc-phase-1/7.png', caption: 'PSI crew setting trolley hardware at track height' },
     ],
     stats: [
       { value: '7M', label: 'sq ft building' },
@@ -50,21 +69,20 @@ export const projects: Project[] = [
     testimonial: null,
   },
   {
-    id: 'p0b',
+    id: 'grand-hyatt-dc',
     name: 'Grand Hyatt Washington — Event Space Operable Walls',
     industry: 'Hospitality',
     productType: 'Operable Partitions',
     location: 'Washington, DC',
-    photo: '/assets/gh-entrance.png',
     photos: [
-      { src: '/assets/gh-entrance.png', caption: 'Grand Hyatt Washington — downtown DC' },
-      { src: '/assets/gh-atrium.png', caption: "The hotel's signature 12-story atrium" },
-      { src: '/assets/gh-ballroom.png', caption: "Grand ballroom — 20'+ panels in the closed position" },
-      { src: '/assets/gh-longwall.png', caption: 'PSI crew completing a full-length wall run with integrated pass doors' },
-      { src: '/assets/gh-chandeliers.png', caption: 'Junior ballroom — acoustic panels dividing the space' },
-      { src: '/assets/gh-passdoor.png', caption: 'Meeting-room divisions with flush pass doors' },
-      { src: '/assets/gh-purple.png', caption: 'Divisible meeting space, walls closed' },
-      { src: '/assets/gh-lifts.png', caption: 'Crews working at track height across parallel rooms' },
+      { src: '/assets/projects/grand-hyatt-dc/1.png', caption: 'Grand Hyatt Washington — downtown DC' },
+      { src: '/assets/projects/grand-hyatt-dc/2.png', caption: "The hotel's signature 12-story atrium" },
+      { src: '/assets/projects/grand-hyatt-dc/3.png', caption: "Grand ballroom — 20'+ panels in the closed position" },
+      { src: '/assets/projects/grand-hyatt-dc/4.png', caption: 'PSI crew completing a full-length wall run with integrated pass doors' },
+      { src: '/assets/projects/grand-hyatt-dc/5.png', caption: 'Junior ballroom — acoustic panels dividing the space' },
+      { src: '/assets/projects/grand-hyatt-dc/6.png', caption: 'Meeting-room divisions with flush pass doors' },
+      { src: '/assets/projects/grand-hyatt-dc/7.png', caption: 'Divisible meeting space, walls closed' },
+      { src: '/assets/projects/grand-hyatt-dc/8.png', caption: 'Crews working at track height across parallel rooms' },
     ],
     stats: [
       { value: '45K+', label: 'sq ft event space' },
@@ -77,19 +95,18 @@ export const projects: Project[] = [
     testimonial: null,
   },
   {
-    id: 'p0c',
+    id: 'gaylord-national',
     name: 'Gaylord National Resort — Convention Center Operable Walls',
     industry: 'Hospitality',
     productType: 'Operable Partitions',
     location: 'National Harbor, MD',
-    photo: '/assets/gn-exterior.png',
     photos: [
-      { src: '/assets/gn-exterior.png', caption: 'Gaylord National Resort & Convention Center — the largest non-gaming hotel and convention center on the East Coast' },
-      { src: '/assets/gn-ballroom.png', caption: 'Ballroom-level operable walls in the closed position' },
-      { src: '/assets/gn-tallroom.png', caption: 'Full-height panels dividing ballroom space floor to ceiling' },
-      { src: '/assets/gn-exhibit-wall.png', caption: 'Exhibition-hall wall run — part of the 180,000 sq ft divisible hall' },
-      { src: '/assets/gn-exhibit-lifts.png', caption: 'PSI crews staging lifts along a completed exhibit-hall run' },
-      { src: '/assets/gn-track.png', caption: 'Overhead track and trolley hardware above the finished panels' },
+      { src: '/assets/projects/gaylord-national/1.png', caption: 'Gaylord National Resort & Convention Center — the largest non-gaming hotel and convention center on the East Coast' },
+      { src: '/assets/projects/gaylord-national/2.png', caption: 'Ballroom-level operable walls in the closed position' },
+      { src: '/assets/projects/gaylord-national/3.png', caption: 'Full-height panels dividing ballroom space floor to ceiling' },
+      { src: '/assets/projects/gaylord-national/4.png', caption: 'Exhibition-hall wall run — part of the 180,000 sq ft divisible hall' },
+      { src: '/assets/projects/gaylord-national/5.png', caption: 'PSI crews staging lifts along a completed exhibit-hall run' },
+      { src: '/assets/projects/gaylord-national/6.png', caption: 'Overhead track and trolley hardware above the finished panels' },
     ],
     stats: [
       { value: '546K+', label: 'sq ft of event space' },
@@ -102,72 +119,77 @@ export const projects: Project[] = [
     testimonial: null,
   },
   {
-    id: 'p1',
+    id: 'vinoy-resort',
     name: 'Vinoy Resort — Operable Wall Renovation',
     industry: 'Hospitality',
     productType: 'Operable Partitions',
     location: 'St. Petersburg, FL',
-    photo: 'https://psicrew.com/wp-content/uploads/2026/06/PSI-PRODUCTS-HUFCOR-Vinoy-Resort-St-Petersburg-FL.jpg',
+    photos: [{ src: 'https://psicrew.com/wp-content/uploads/2026/06/PSI-PRODUCTS-HUFCOR-Vinoy-Resort-St-Petersburg-FL.jpg' }],
     summary:
       "Refurbished the resort's Hufcor operable wall system across its ballroom and meeting spaces, restoring like-new operation and acoustics.",
     testimonial: null,
   },
   {
-    id: 'p2',
+    id: 'united-corporate',
     name: 'United Corporate Campus — Operable Wall Service',
     industry: 'Commercial',
     productType: 'Operable Partitions',
     location: 'Atlanta, GA',
-    photo: 'https://psicrew.com/wp-content/uploads/2026/06/PSI-HUFCOR-Services-United-Atlanta-Georgia.jpg',
+    photos: [{ src: 'https://psicrew.com/wp-content/uploads/2026/06/PSI-HUFCOR-Services-United-Atlanta-Georgia.jpg' }],
     summary:
       "Ongoing preventive maintenance and repair service for the campus's movable wall systems, keeping conference space reconfigurable on demand.",
     testimonial: null,
   },
   {
-    id: 'p3',
+    id: 'hillsborough-schools',
     name: 'Hillsborough County Schools — Gymnasium Equipment',
     industry: 'Education',
     productType: 'Basketball Systems',
     location: 'Hillsborough County, FL',
-    photo: null,
+    photos: [],
     summary:
       'Supplied and installed electric wall-mounted basketball backstops and protective wall padding across district middle school gymnasiums.',
     testimonial: null,
   },
   {
-    id: 'p4',
+    id: 'ymca-suncoast-tampa',
     name: 'YMCA Suncoast & Tampa — Multi-Court Divider System',
     industry: 'Recreation',
     productType: 'Divider Curtains',
     location: 'Tampa, FL',
-    photo: null,
+    photos: [],
     summary:
       'Installed motorized divider curtains and volleyball systems across three recreation center courts for flexible multi-use scheduling.',
     testimonial: null,
   },
   {
-    id: 'p5',
+    id: 'pasco-county',
     name: 'Pasco County — Bleacher & Wall Pad Upgrade',
     industry: 'Government',
     productType: 'Bleachers',
     location: 'Pasco County, FL',
-    photo: null,
+    photos: [],
     summary:
       'Replaced aging telescoping bleachers and refreshed protective wall padding across county recreation facilities.',
     testimonial: null,
   },
   {
-    id: 'p6',
+    id: 'occc-airwall-restoration',
     name: 'Orange County Convention Center — Airwall Restoration',
     industry: 'Commercial',
     productType: 'Operable Partitions',
     location: 'Orlando, FL',
-    photo: null,
+    photos: [],
     summary:
       "Large-scale operable wall renovation across the convention center's divisible exhibit halls, restoring seals and trolley systems to factory spec.",
     testimonial: null,
   },
 ];
+
+/** First photo is the cover thumbnail for a project; null if it has none yet. */
+export function projectCover(project: Project): string | null {
+  return project.photos[0]?.src ?? null;
+}
 
 // Real PSI team — from psicrew.com/about-us/
 export const team: TeamMember[] = [

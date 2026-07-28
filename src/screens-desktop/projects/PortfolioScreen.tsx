@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { industries, productTypes, projects } from '../../data/seed';
+import { industries, productTypes, projectCover, projects } from '../../data/seed';
 import { Tag } from '../../components/ui/Tag';
 import { Photo, PlaceholderPhoto } from '../../components/ui/PlaceholderPhoto';
 
@@ -39,9 +39,11 @@ export function PortfolioScreen() {
         </div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 'var(--space-4)' }}>
-        {filteredProjects.map((proj) => (
+        {filteredProjects.map((proj) => {
+          const cover = projectCover(proj);
+          return (
           <div key={proj.id} className="card elev-sm" style={{ padding: 0, overflow: 'hidden', cursor: 'pointer' }} onClick={() => navigate(`/projects/${proj.id}`)}>
-            {proj.photo ? <Photo src={proj.photo} alt={proj.name} height={150} style={{ width: '100%' }} /> : <PlaceholderPhoto label="PROJECT PHOTO" height={150} />}
+            {cover ? <Photo src={cover} alt={proj.name} height={150} style={{ width: '100%' }} /> : <PlaceholderPhoto label="PROJECT PHOTO" height={150} />}
             <div style={{ padding: 'var(--space-3)', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
               <div style={{ display: 'flex', gap: 6 }}>
                 <Tag variant="accent">{proj.industry}</Tag>
@@ -51,7 +53,8 @@ export function PortfolioScreen() {
               <div className="card-meta">{proj.location}</div>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
       {filteredProjects.length === 0 && <p style={{ opacity: 0.6, padding: 'var(--space-6) 0' }}>No projects match those filters yet.</p>}
     </section>

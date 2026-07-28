@@ -1,7 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { projects } from '../../data/seed';
+import { projectCover, projects } from '../../data/seed';
 import { Tag } from '../../components/ui/Tag';
 import { Photo, PlaceholderPhoto } from '../../components/ui/PlaceholderPhoto';
+import { PhotoGallery } from '../../components/ui/PhotoGallery';
 
 export function ProjectDetailScreen() {
   const { id } = useParams();
@@ -17,14 +18,14 @@ export function ProjectDetailScreen() {
     );
   }
 
-  const gallery = (project.photos ?? []).slice(1);
+  const cover = projectCover(project);
 
   return (
     <div>
       <button className="btn btn-ghost" style={{ margin: '8px 8px 0' }} onClick={() => navigate('/projects')}>
         ← Projects
       </button>
-      {project.photo ? <Photo src={project.photo} alt={project.name} height={200} /> : <PlaceholderPhoto label="PROJECT PHOTO" height={200} />}
+      {cover ? <Photo src={cover} alt={project.name} height={200} /> : <PlaceholderPhoto label="PROJECT PHOTO" height={200} />}
       <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 10 }}>
         <div style={{ display: 'flex', gap: 6 }}>
           <Tag variant="accent">{project.industry}</Tag>
@@ -45,14 +46,10 @@ export function ProjectDetailScreen() {
           </div>
         )}
 
-        {gallery.length > 0 && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {gallery.map((ph, i) => (
-              <figure key={i} style={{ margin: 0 }}>
-                <div role="img" aria-label={ph.caption} style={{ height: 180, backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: `url('${ph.src}')` }} />
-                <figcaption style={{ fontSize: 11, opacity: 0.6, padding: '5px 0' }}>{ph.caption}</figcaption>
-              </figure>
-            ))}
+        {project.photos.length > 1 && (
+          <div>
+            <h6 style={{ margin: '0 0 8px' }}>Photos</h6>
+            <PhotoGallery photos={project.photos} alt={project.name} />
           </div>
         )}
 

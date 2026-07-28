@@ -1,7 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { projects } from '../../data/seed';
+import { projectCover, projects } from '../../data/seed';
 import { Tag } from '../../components/ui/Tag';
 import { Photo, PlaceholderPhoto } from '../../components/ui/PlaceholderPhoto';
+import { PhotoGallery } from '../../components/ui/PhotoGallery';
 
 export function ProjectDetailScreen() {
   const { id } = useParams();
@@ -17,13 +18,13 @@ export function ProjectDetailScreen() {
     );
   }
 
-  const gallery = (project.photos ?? []).slice(1);
+  const cover = projectCover(project);
 
   return (
     <section style={{ maxWidth: 900, margin: '0 auto', padding: 'var(--space-6) var(--space-4)' }}>
       <button className="btn btn-ghost" onClick={() => navigate('/projects')}>← Back to portfolio</button>
-      {project.photo ? (
-        <Photo src={project.photo} alt={project.name} height={320} style={{ width: '100%', marginTop: 'var(--space-3)' }} />
+      {cover ? (
+        <Photo src={cover} alt={project.name} height={320} style={{ width: '100%', marginTop: 'var(--space-3)' }} />
       ) : (
         <PlaceholderPhoto label={`PROJECT PHOTO — ${project.name}`} height={320} style={{ marginTop: 'var(--space-3)' }} />
       )}
@@ -46,14 +47,10 @@ export function ProjectDetailScreen() {
         </div>
       )}
 
-      {gallery.length > 0 && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-3)', marginTop: 'var(--space-4)' }}>
-          {gallery.map((ph, i) => (
-            <figure key={i} style={{ margin: 0 }}>
-              <div role="img" aria-label={ph.caption} style={{ height: 240, backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: `url('${ph.src}')` }} />
-              <figcaption style={{ fontSize: 11.5, opacity: 0.6, padding: '6px 2px' }}>{ph.caption}</figcaption>
-            </figure>
-          ))}
+      {project.photos.length > 1 && (
+        <div style={{ marginTop: 'var(--space-4)' }}>
+          <h6 style={{ color: 'var(--color-accent)', marginBottom: 'var(--space-2)' }}>Photos</h6>
+          <PhotoGallery photos={project.photos} alt={project.name} />
         </div>
       )}
 

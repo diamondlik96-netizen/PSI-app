@@ -1,6 +1,6 @@
 export interface ProjectPhoto {
   src: string;
-  caption: string;
+  caption?: string;
 }
 
 export interface ProjectStat {
@@ -15,8 +15,8 @@ export interface Project {
   productType: string;
   location: string;
   featured?: boolean;
-  photo: string | null;
-  photos?: ProjectPhoto[];
+  /** First photo is used as the cover thumbnail everywhere (list cards, home, etc). Empty array = no photos yet, shows a placeholder. */
+  photos: ProjectPhoto[];
   stats?: ProjectStat[];
   summary: string;
   testimonial: string | null;

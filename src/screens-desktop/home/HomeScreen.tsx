@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { clientLogos, projects, services } from '../../data/seed';
+import { clientLogos, projectCover, projects, services } from '../../data/seed';
 import { useInstallPrompt } from '../../hooks/useInstallPrompt';
 import { Tag } from '../../components/ui/Tag';
 import { Photo, PlaceholderPhoto } from '../../components/ui/PlaceholderPhoto';
@@ -116,9 +116,11 @@ export function HomeScreen() {
           <button className="btn btn-ghost" onClick={() => navigate('/projects')}>View full portfolio</button>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 'var(--space-4)', marginTop: 'var(--space-3)' }}>
-          {featuredProjects.map((proj) => (
+          {featuredProjects.map((proj) => {
+            const cover = projectCover(proj);
+            return (
             <div key={proj.id} className="card elev-sm" style={{ padding: 0, overflow: 'hidden', cursor: 'pointer' }} onClick={() => navigate(`/projects/${proj.id}`)}>
-              {proj.photo ? <Photo src={proj.photo} alt={proj.name} height={150} style={{ width: '100%' }} /> : <PlaceholderPhoto label="PROJECT PHOTO" height={150} />}
+              {cover ? <Photo src={cover} alt={proj.name} height={150} style={{ width: '100%' }} /> : <PlaceholderPhoto label="PROJECT PHOTO" height={150} />}
               <div style={{ padding: 'var(--space-3)', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
                 <div style={{ display: 'flex', gap: 6 }}>
                   <Tag variant="accent">{proj.industry}</Tag>
@@ -128,7 +130,8 @@ export function HomeScreen() {
                 <div className="card-meta">{proj.location}</div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
