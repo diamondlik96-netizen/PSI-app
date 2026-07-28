@@ -103,6 +103,8 @@ figcaption {
 
 .grayscale { filter: grayscale(1) contrast(1.08); }
 
+.hr { height: 2px; border: 0; margin: var(--space-4) 0; background: var(--color-divider); }
+
 /* — buttons — */
 .btn {
   display: inline-flex;
@@ -162,6 +164,28 @@ textarea.input { min-height: 90px; resize: vertical; }
   background: var(--color-surface);
 }
 .elev-sm { box-shadow: var(--shadow-sm); }
+.card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+.card-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 17px; line-height: 1.2; }
+.card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
+.card-meta { display: flex; align-items: center; gap: 6px; font-size: 11px; color: color-mix(in srgb, var(--color-text) 50%, transparent); }
+
+/* — segmented radio control (desktop service-type picker) — */
+.seg { display: inline-flex; overflow: hidden; border: 1px solid var(--color-divider); }
+.seg-opt { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; font-size: 13px; cursor: pointer; }
+.seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
+.seg-opt:has(input:checked) { background: var(--color-accent); color: var(--color-bg); }
+.seg-opt:not(:has(input:checked)):hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.seg-opt input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+
+/* — data table (desktop account history) — */
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th {
+  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  padding: var(--space-2); border-bottom: 2px solid var(--color-divider);
+}
+.table td { padding: var(--space-2); border-bottom: 1px solid var(--color-divider); }
+.table tbody tr:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
 
 /* — tags — */
 .tag {
@@ -276,3 +300,69 @@ textarea.input { min-height: 90px; resize: vertical; }
   100% { box-shadow: 0 0 0 0 rgba(195, 22, 29, 0); }
 }
 .m-pulse-dot { animation: m-pulse 1.6s infinite; }
+
+/* — desktop website chrome — */
+.cw-nav-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 8px 2px;
+  white-space: nowrap;
+}
+.cw-nav-link:hover { opacity: 1 !important; border-bottom-color: rgba(255, 255, 255, 0.5) !important; }
+
+.cw-daybtn {
+  aspect-ratio: 1;
+  border: 1px solid var(--color-divider);
+  background: var(--color-surface);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.cw-daybtn:hover:not(:disabled) { border-color: var(--color-accent); }
+.cw-daybtn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.cw-slot {
+  border: 1px solid var(--color-divider);
+  background: var(--color-surface);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 13px;
+  padding: 10px;
+  text-align: left;
+}
+.cw-slot:hover { border-color: var(--color-accent); }
+
+.cw-thread {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-divider);
+  cursor: pointer;
+  padding: 12px;
+  font-family: var(--font-body);
+}
+.cw-thread:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
+.cw-thread[data-active='true'] { background: var(--color-accent-100); }
+
+.cw-chip {
+  border: 1px solid var(--color-divider);
+  background: var(--color-surface);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 12px;
+  padding: 5px 12px;
+}
+.cw-chip[data-active='true'] { background: var(--color-accent); color: var(--color-bg); border-color: var(--color-accent); }
+
+.cw-logostrip { display: flex; gap: var(--space-6); align-items: center; flex-wrap: wrap; }
+.cw-logostrip img { height: 32px; width: auto; opacity: 0.75; object-fit: contain; }

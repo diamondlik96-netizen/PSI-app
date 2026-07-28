@@ -16,6 +16,10 @@ export interface QuoteForm {
   issueDescription: string;
   photos: number;
   submitted: boolean;
+  // Desktop quote wizard also collects these; unused by the mobile forms.
+  name: string;
+  email: string;
+  notes: string;
 }
 
 export interface IssueForm {
@@ -34,6 +38,9 @@ export interface ScheduleForm {
   location: string;
   notes: string;
   confirmed: boolean;
+  // Desktop schedule form also collects these; unused by the mobile form.
+  name: string;
+  phone: string;
 }
 
 export interface ReviewState {
@@ -72,6 +79,9 @@ const emptyQuoteForm: QuoteForm = {
   issueDescription: '',
   photos: 0,
   submitted: false,
+  name: '',
+  email: '',
+  notes: '',
 };
 
 const emptyIssueForm: IssueForm = {
@@ -90,6 +100,8 @@ const emptyScheduleForm: ScheduleForm = {
   location: '',
   notes: '',
   confirmed: false,
+  name: '',
+  phone: '',
 };
 
 const initialState: AppState = {

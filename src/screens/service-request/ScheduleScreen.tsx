@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { SERVICE_TYPES, SLOT_POOL, useAppState } from '../../state/AppStateContext';
 import { Chip } from '../../components/ui/Chip';
 
@@ -17,6 +17,15 @@ function daySlotCount(day: number): number {
 export function ScheduleScreen() {
   const { state, dispatch } = useAppState();
   const { scheduleForm } = state;
+
+  // scheduleForm.serviceType is shared with the desktop screens, whose labels differ
+  // ("Repair / Adjustment" vs "Repair", etc.) — normalize to a valid mobile label.
+  useEffect(() => {
+    if (!(SERVICE_TYPES as readonly string[]).includes(scheduleForm.serviceType)) {
+      dispatch({ type: 'setScheduleForm', patch: { serviceType: SERVICE_TYPES[0] } });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const cells = useMemo(() => {
     const firstDow = new Date(YEAR, MONTH, 1).getDay();
