@@ -57,7 +57,6 @@ export interface ReferralState {
 }
 
 interface AppState {
-  isLoggedIn: boolean;
   threads: Thread[];
   appointments: Appointment[];
   openQuotes: OpenQuote[];
@@ -105,7 +104,6 @@ const emptyScheduleForm: ScheduleForm = {
 };
 
 const initialState: AppState = {
-  isLoggedIn: false,
   threads: initialThreads,
   appointments: initialAppointments,
   openQuotes: initialOpenQuotes,
@@ -119,8 +117,6 @@ const initialState: AppState = {
 };
 
 type Action =
-  | { type: 'logIn' }
-  | { type: 'logOut' }
   | { type: 'setQuoteForm'; patch: Partial<QuoteForm> }
   | { type: 'submitQuote' }
   | { type: 'resetQuoteForm' }
@@ -148,10 +144,6 @@ function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
     case 'hydrate':
       return action.state;
-    case 'logIn':
-      return { ...state, isLoggedIn: true };
-    case 'logOut':
-      return { ...state, isLoggedIn: false };
     case 'setQuoteForm':
       return { ...state, quoteForm: { ...state.quoteForm, ...action.patch } };
     case 'submitQuote':

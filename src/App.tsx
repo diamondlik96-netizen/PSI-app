@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppStateProvider } from './state/AppStateContext';
+import { AuthProvider } from './state/AuthContext';
 import { useViewMode } from './hooks/useViewMode';
 
 import { AppShell } from './components/shell/AppShell';
@@ -12,6 +13,7 @@ import { ScheduleScreen } from './screens/service-request/ScheduleScreen';
 import { QuoteFlowScreen } from './screens/service-request/QuoteFlowScreen';
 import { ReportIssueScreen } from './screens/service-request/ReportIssueScreen';
 import { AccountScreen } from './screens/account/AccountScreen';
+import { SignUpScreen } from './screens/account/SignUpScreen';
 import { QuoteDetailScreen } from './screens/account/QuoteDetailScreen';
 import { InvoiceDetailScreen } from './screens/account/InvoiceDetailScreen';
 import { TechnicianTrackingScreen } from './screens/tracking/TechnicianTrackingScreen';
@@ -28,6 +30,7 @@ import { ScheduleScreen as DesktopScheduleScreen } from './screens-desktop/servi
 import { QuoteFlowScreen as DesktopQuoteFlowScreen } from './screens-desktop/service-request/QuoteFlowScreen';
 import { ReportIssueScreen as DesktopReportIssueScreen } from './screens-desktop/service-request/ReportIssueScreen';
 import { AccountScreen as DesktopAccountScreen } from './screens-desktop/account/AccountScreen';
+import { SignUpScreen as DesktopSignUpScreen } from './screens-desktop/account/SignUpScreen';
 import { QuoteDetailScreen as DesktopQuoteDetailScreen } from './screens-desktop/account/QuoteDetailScreen';
 import { InvoiceDetailScreen as DesktopInvoiceDetailScreen } from './screens-desktop/account/InvoiceDetailScreen';
 import { TechnicianTrackingScreen as DesktopTechnicianTrackingScreen } from './screens-desktop/tracking/TechnicianTrackingScreen';
@@ -46,6 +49,7 @@ function MobileRoutes() {
         <Route path="/quote" element={<QuoteFlowScreen />} />
         <Route path="/report-issue" element={<ReportIssueScreen />} />
         <Route path="/account" element={<AccountScreen />} />
+        <Route path="/account/sign-up" element={<SignUpScreen />} />
         <Route path="/account/tracking" element={<TechnicianTrackingScreen />} />
         <Route path="/account/quotes/:id" element={<QuoteDetailScreen />} />
         <Route path="/account/invoices/:id" element={<InvoiceDetailScreen />} />
@@ -69,6 +73,7 @@ function DesktopRoutes() {
         <Route path="/quote" element={<DesktopQuoteFlowScreen />} />
         <Route path="/report-issue" element={<DesktopReportIssueScreen />} />
         <Route path="/account" element={<DesktopAccountScreen />} />
+        <Route path="/account/sign-up" element={<DesktopSignUpScreen />} />
         <Route path="/account/tracking" element={<DesktopTechnicianTrackingScreen />} />
         <Route path="/account/quotes/:id" element={<DesktopQuoteDetailScreen />} />
         <Route path="/account/invoices/:id" element={<DesktopInvoiceDetailScreen />} />
@@ -86,11 +91,13 @@ function ViewModeRouter() {
 
 function App() {
   return (
-    <AppStateProvider>
-      <BrowserRouter>
-        <ViewModeRouter />
-      </BrowserRouter>
-    </AppStateProvider>
+    <AuthProvider>
+      <AppStateProvider>
+        <BrowserRouter>
+          <ViewModeRouter />
+        </BrowserRouter>
+      </AppStateProvider>
+    </AuthProvider>
   );
 }
 

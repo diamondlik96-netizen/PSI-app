@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAppState } from '../../state/AppStateContext';
+import { useAuth } from '../../state/AuthContext';
 import { psiLogoUrl, siteLinks } from '../../data/siteLinks';
 
 const NAV_ITEMS = [
@@ -26,7 +26,7 @@ function activeNavFor(pathname: string): string {
 export function TopNav() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { state } = useAppState();
+  const { isLoggedIn } = useAuth();
   const active = activeNavFor(location.pathname);
 
   return (
@@ -75,7 +75,7 @@ export function TopNav() {
           })}
         </div>
         <div style={{ flex: 'none' }}>
-          {state.isLoggedIn ? (
+          {isLoggedIn ? (
             <button className="btn btn-primary" onClick={() => navigate('/account')}>
               My Account
             </button>

@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import { useAppState } from '../../state/AppStateContext';
+import { useAuth } from '../../state/AuthContext';
 import { psiLogoUrl, siteLinks } from '../../data/siteLinks';
 
 export function Header() {
   const navigate = useNavigate();
-  const { state } = useAppState();
+  const { isLoggedIn } = useAuth();
 
   return (
     <div style={{ background: 'var(--color-header-bg)', paddingTop: 'env(safe-area-inset-top)' }}>
@@ -19,12 +19,12 @@ export function Header() {
         <div style={{ background: '#fff', padding: '5px 10px', cursor: 'pointer', flex: 'none' }} onClick={() => navigate('/')}>
           <img src={psiLogoUrl} alt="PSI — Precision Service & Installation" style={{ height: 26, width: 'auto', display: 'block' }} />
         </div>
-        {!state.isLoggedIn && (
+        {!isLoggedIn && (
           <button className="btn btn-primary" style={{ fontSize: 12, padding: '6px 14px' }} onClick={() => navigate('/account')}>
             Log In
           </button>
         )}
-        {state.isLoggedIn && (
+        {isLoggedIn && (
           <a href="tel:8003301200" className="tag tag-accent" style={{ textDecoration: 'none' }}>
             24/7 · (800) 330-1200
           </a>

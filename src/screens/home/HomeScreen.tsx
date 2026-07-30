@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { heroPhoto, projectCover, projects, services } from '../../data/seed';
 import { useAppState } from '../../state/AppStateContext';
+import { useAuth } from '../../state/AuthContext';
 import { RedBarHeading } from '../../components/ui/RedBarHeading';
 import { Tag } from '../../components/ui/Tag';
 import { Photo, PlaceholderPhoto } from '../../components/ui/PlaceholderPhoto';
@@ -8,7 +9,8 @@ import { Photo, PlaceholderPhoto } from '../../components/ui/PlaceholderPhoto';
 export function HomeScreen() {
   const navigate = useNavigate();
   const { state } = useAppState();
-  const hasUpcoming = state.isLoggedIn && state.appointments.length > 0;
+  const { isDemoMode } = useAuth();
+  const hasUpcoming = isDemoMode && state.appointments.length > 0;
   const nextAppt = state.appointments[0];
   const featuredProjects = projects.slice(0, 3);
 
