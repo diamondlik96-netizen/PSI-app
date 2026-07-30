@@ -15,7 +15,7 @@ export default defineConfig({
         name: 'PSI Customer Portal',
         short_name: 'PSI Portal',
         description: 'Precision Service & Installation — customer service portal',
-        theme_color: '#c3161d',
+        theme_color: '#bd0d0d',
         background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',

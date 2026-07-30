@@ -15,7 +15,6 @@ export function AppShell() {
           background: 'var(--color-bg)',
           color: 'var(--color-text)',
           fontFamily: 'var(--font-body)',
-          paddingTop: 'env(safe-area-inset-top)',
         }}
       >
         <Header />

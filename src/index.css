@@ -1,23 +1,27 @@
 @import 'tailwindcss';
 
-/* PSI brand tokens — accent red + oklch ramp, flat/squared design language.
-   Ported from the design handoff's PSI Mobile App.dc.html :root overrides. */
+/* PSI brand tokens — matched to the live psicrew.com site (accent red, ink,
+   header black, and font stacks sampled directly from the site's computed
+   styles) so the portal reads as part of the same site. Accent ramp is
+   derived from the single --color-accent value via color-mix so re-tuning
+   the brand only ever means changing one line. */
 :root {
   --color-bg: #ffffff;
   --color-surface: #f5f4f4;
-  --color-text: #1a1a1a;
-  --color-divider: color-mix(in srgb, #1a1a1a 16%, transparent);
+  --color-text: #33373d;
+  --color-divider: color-mix(in srgb, #33373d 16%, transparent);
+  --color-header-bg: #000000;
 
-  --color-accent: #c3161d;
-  --color-accent-100: oklch(96% 0.02 27);
-  --color-accent-200: oklch(91% 0.05 27);
-  --color-accent-300: oklch(84% 0.09 27);
-  --color-accent-400: oklch(70% 0.15 27);
-  --color-accent-500: oklch(55% 0.2 27);
-  --color-accent-600: oklch(46% 0.18 27);
-  --color-accent-700: oklch(39% 0.15 27);
-  --color-accent-800: oklch(31% 0.12 27);
-  --color-accent-900: oklch(22% 0.08 27);
+  --color-accent: #bd0d0d;
+  --color-accent-100: color-mix(in srgb, var(--color-accent) 10%, #fff);
+  --color-accent-200: color-mix(in srgb, var(--color-accent) 20%, #fff);
+  --color-accent-300: color-mix(in srgb, var(--color-accent) 35%, #fff);
+  --color-accent-400: color-mix(in srgb, var(--color-accent) 60%, #fff);
+  --color-accent-500: var(--color-accent);
+  --color-accent-600: color-mix(in srgb, var(--color-accent) 85%, #000);
+  --color-accent-700: color-mix(in srgb, var(--color-accent) 70%, #000);
+  --color-accent-800: color-mix(in srgb, var(--color-accent) 55%, #000);
+  --color-accent-900: color-mix(in srgb, var(--color-accent) 40%, #000);
 
   --color-neutral-100: #f8f4f4;
   --color-neutral-200: #eae7e7;
@@ -29,9 +33,13 @@
   --color-neutral-800: #444141;
   --color-neutral-900: #2d2b2b;
 
-  --font-heading: 'Archivo', system-ui, sans-serif;
-  --font-heading-weight: 800;
-  --font-body: 'Archivo', system-ui, sans-serif;
+  /* psicrew.com's nav/heading font is a licensed condensed font we can't
+     legally embed — Oswald is the closest free equivalent (condensed,
+     mixed-case, wide weight range). Body font matches the live site's
+     system-font stack exactly. */
+  --font-heading: 'Oswald', sans-serif;
+  --font-heading-weight: 700;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
   --space-1: 4px;
   --space-2: 8px;
